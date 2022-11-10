@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\ContatoModel;
 
-class ContatoController extends Controller
+use Illuminate\Http\Request;
+use App\ProdutosModel;
+
+class ProdutoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +14,23 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        $contato = ContatoModel::all();
-        return view('contato', compact('contato'));        
-        //
+        $produto = ProdutosModel::all();
+        return view('produto', compact('produto'));
     }
 
-    public function destroy($idContato)
-        {
-         ContatoModel::where('idContato',$idContato)->delete();
-         return redirect("/contato");
-        }
+    // Função de consulta (teste)
     
+    public function consultaAll() {
+
+    }
+
+    public function consulta() {
+       $produto = ProdutoModel::where('produto','xbox series s')->get();
+    
+       return view('produto', compact('produto'));
+    }
+     
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,14 +48,17 @@ class ContatoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) { 
-        $contato = new ContatoModel(); 
-        $contato -> nomeCliente = $request->txNome; 
-        $contato -> emailCliente = $request->txEmail; 
-        $contato -> telefoneCliente = $request->txFone; 
-        $contato -> mensagemCliente = $request->txMensagem; 
-        $contato -> save(); 
-        return redirect("/contato"); }
+    public function store(Request $request)
+    {
+        $produto = new ProdutoModel();
+
+        $produto -> produto = $request -> txProduto;
+        $produto -> valor = $request -> txValor;
+        
+        $produto -> save();
+
+        return redirect("/produto");
+    }
 
     /**
      * Display the specified resource.
@@ -69,7 +79,9 @@ class ContatoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produto = ProdutoModel::find($id);
+        $title = "Editar produto - {$produto->produto}";
+        return view ('', compact('title', 'produto'));
     }
 
     /**
@@ -90,4 +102,9 @@ class ContatoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function destroy($id)
+    {
+        ProdutoModel::where('idProduto',$id)->delete();
+        return redirect("/produto");
+    }
 }

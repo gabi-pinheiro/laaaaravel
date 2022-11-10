@@ -7,7 +7,7 @@
     font-size: 1em;
   }
 
-div{
+.djonga{
   width: 70%;
   margin-left: 15%;
 }
@@ -291,6 +291,15 @@ h1{
   margin-bottom: 3vh
 }
 
+.forma{
+  background: #fff;
+  position:static;
+  margin-top: 0vh;
+  box-shadow: 0px 2px 5px rgba(0,0,0,.25);
+  margin-bottom: 3vh;
+  padding: 2vh;
+}
+
 .form input{
     margin-bottom: 20px;
     display: fle;
@@ -313,7 +322,11 @@ h1{
 }
 
 .form p{
-    background-color: white;
+  background-color: white;
+}
+
+.forma p{
+  background-color: white;
 }
 
 .form input[type="submit"]{

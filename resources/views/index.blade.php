@@ -2,7 +2,7 @@
 @section('content')
 
 
-<div class="content-main">
+<div class="djonga">
     <div id="apresentacao">
         <h1> Seja bem vindo ao brechó Rêve D'amour! </h1>
         <p>

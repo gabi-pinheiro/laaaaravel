@@ -17,12 +17,17 @@
         <br>
         <input type="submit" value="Enviar">
     </form>
-</div>
 
-    <div>
+    <div class="forma">
+        <b> <p> Comentários </p> </b>
         @foreach ($contato as $row)
-            <h1> {{$row->mensagemCliente}} </h1> 
-        @endforeach
+        <hr>
+        <p> {{$row->nomeCliente}} </p>
+        <p> {{$row->mensagemCliente}} </p> 
+             <a href="/contato/{{$row->idContato}}"> Excluir </a>
+         @endforeach
+
     </div>
+</div>
 
 @endsection

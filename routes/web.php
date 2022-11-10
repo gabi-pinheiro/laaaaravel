@@ -37,3 +37,7 @@ Route::get('/contato','ContatoController@index');
 
 Route::post('/contato/inserir','ContatoController@store');
 
+Route::get('/contato/{idContato}','ContatoController@destroy');
+
+Route::get('/produtos', 'ProdutosController@index');
+
